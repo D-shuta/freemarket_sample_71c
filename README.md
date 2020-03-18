@@ -48,13 +48,13 @@
 |buyer_id|reference|foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :categores-items
-- has_many :categores
-- has_many :categores, through: :categores-items
+- has_many :categories-items
+- has_many :categories
+- has_many :categories, through: :categories-items
 - has_many :images
 - belongs_to :brand
 
-## categores-itemsテーブル
+## categories-itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |categery_id|reference|null: false, foreign_key: true|
@@ -63,19 +63,16 @@
 - belongs_to :item
 - belongs_to :categore
 
-## categoresテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 ### Association
-- has_many :categores-items
-- has_many :items, through: :categores-items
+- has_many :categories-items
+- has_many :items, through: :categories-items
 - has_many :items
-- has_many :categores-brands
-- has_many :bramds, through: :categores-brends
-- has_many :brands
 
-## categores-brandsテーブル
+## categories-brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |category_id|reference|null: false, foreign_key: true|
@@ -90,9 +87,6 @@
 |name|string|null: false|
 ### Association
 - has_many :items
-- has_many :categores-brands
-- has_many :categores, through: :categores-brends
-- has_many :categores
 
 ## imagesテーブル
 |Column|Type|Options|
