@@ -1,5 +1,4 @@
-![image](https://user-images.githubusercontent.com/61194189/76930165-38752b80-6929-11ea-9b2b-372151916962.png)
-
+![image](https://user-images.githubusercontent.com/61194189/76930972-08c72300-692b-11ea-915e-1e581c5335e7.png)
 # freemarket_sample_71c
 
 ## usersテーブル
@@ -10,7 +9,7 @@
 |name_ruby|string|null: false|
 |birthday|date|null: false|
 |phone_number|integer||
-|address_id|reference|null: false, foreign_key: true|
+|user_address_id|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to :address
 - has_many :cards
@@ -68,8 +67,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|string||
 ### Association
 - has_many :items
+- has ancestry
 
 ## brandsテーブル
 |Column|Type|Options|
