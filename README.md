@@ -1,14 +1,24 @@
-![image](https://user-images.githubusercontent.com/61194189/76924396-884bf680-6919-11ea-9e55-c36f0ead0681.png)
+![image](https://user-images.githubusercontent.com/61194189/76930165-38752b80-6929-11ea-9b2b-372151916962.png)
 
 # freemarket_sample_71c
-## usersテーブル
 
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|mickname|string|null: false|
+|nnickname|string|null: false|
 |name|string|null: false|
 |name_ruby|string|null: false|
 |birthday|date|null: false|
+|phone_number|integer||
+|address_id|reference|null: false, foreign_key: true|
+### Association
+- belongs_to :address
+- has_many :cards
+- has_many :items
+
+## user_address
+|Column|Type|Options|
+|------|----|-------|
 |destinaition_name|string|null: false|
 |destinaition_ruby|string|null: false|
 |postal_code|integer|null: false|
@@ -16,10 +26,9 @@
 |municipality|string|null: false|
 |address|string|null: false|
 |building_name|string||
-|phone_number|integer||
+|user_id|reference|null: false, foreign_key: true|
 ### Association
-- has_many :cards
-- has_many :items
+- belongs_to :user
 
 ## cardsテーブル
 |Column|Type|Options|
