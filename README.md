@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/61194189/76920918-0a372200-6910-11ea-81cb-e8e049d0e200.png)
+![image](https://user-images.githubusercontent.com/61194189/76924396-884bf680-6919-11ea-9e55-c36f0ead0681.png)
 
 # freemarket_sample_71c
 ## usersテーブル
@@ -44,42 +44,23 @@
 |price|integer|null: false|
 |region|string|null: false|
 |state|string|null: false|
-|seler_id|reference|foreign_key: true|
-|buyer_id|reference|foreign_key: true|
+|seler_id|reference|null: false, foreign_key: true|
+|buyer_id|reference|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
+|category_id|reference|null: false, foreign_key: true|
+|brand_id|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :categories-items
-- has_many :categories
-- has_many :categories, through: :categories-items
-- has_many :images
+- belongs_to :categry
 - belongs_to :brand
-
-## categories-itemsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|categery_id|reference|null: false, foreign_key: true|
-|item_id|reference|null: false, foreign_key: true|
-### Association
-- belongs_to :item
-- belongs_to :categore
+- has_many :images
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 ### Association
-- has_many :categories-items
-- has_many :items, through: :categories-items
 - has_many :items
-
-## categories-brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_id|reference|null: false, foreign_key: true|
-|brand_id|reference|null: false, foreign_key: true|
-### Association
-- belongs_to :category
-- belongs_to :brand
 
 ## brandsテーブル
 |Column|Type|Options|
