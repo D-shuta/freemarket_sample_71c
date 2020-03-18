@@ -5,7 +5,7 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nnickname|string|null: false|
+|nickname|string|null: false|
 |name|string|null: false|
 |name_ruby|string|null: false|
 |birthday|date|null: false|
