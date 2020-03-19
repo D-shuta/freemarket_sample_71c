@@ -7,16 +7,16 @@ class User < ApplicationRecord
   # ユーザー情報
     # ニックネームは必須（空にしない）
   validates :nickname, presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
     # メールアドレスは 一意、            ＠とドメインを含む必要がある
-  validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :email, uniqueness: true
     # パスワードは                必須、            ７文字以上
   validates :encrypted_password, presence: true, length: { minimum: 7 }
   # 本人確認情報
     # ユーザー本名は、苗字と名前でわける、全角入力のみ
-  validates :name, :first_name, presence: true, format: { wiht: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :name, :first_name, presence: true
     # 本名ふりがなは、苗字と名前でわける、かな全角入力のみ
-  validates :name_kana, :first_name_kana, presence: true, format: { wiht: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :name_kana, :first_name_kana, presence: true
     # 生年月日は必須
   validates :birthday, presence: true
 end
