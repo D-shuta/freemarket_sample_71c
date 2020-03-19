@@ -14,28 +14,28 @@
               .field-label
                 = f.label :フリガナ（名字）
               .field-input
-                = f.text_field :name, autofocus: true, autocomplete: "given-name", autocomplete: "off",placeholder:"フリガナ＊必須",size:15
+                = f.text_field :name, autofocus: true, autocomplete: "given-name", autocomplete: "off",placeholder:"フリガナ＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角カナで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名字）
               .field-input
-                = f.text_field :name,autocomplete: "given-name",placeholder:"名字入力＊必須",size:15
+                = f.text_field :name,autocomplete: "given-name",placeholder:"名字入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
           .field__box-two
             .field
               .field-label
                 = f.label :フリガナ（名前）全角
               .field-input
-                = f.text_field :name,autocomplete: "family-name", autocomplete: "off",placeholder:"フリガナ＊必須",size:15
+                = f.text_field :name,autocomplete: "family-name", autocomplete: "off",placeholder:"フリガナ＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角カナで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名前）全角
               .field-input
-                = f.text_field :name,autocomplete: "family-name",placeholder:"名前入力＊必須",size:15
+                = f.text_field :name,autocomplete: "family-name",placeholder:"名前入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
         .field
           .field-label
             = f.label :郵便番号
           .field-input
-            = f.number_field :name,autocomplete: "off",placeholder:"郵便番号＊必須",size:10
+            = f.number_field :name,autocomplete: "off",placeholder:"郵便番号＊必須",size:10,required:true,pattern:'^[0-9]{3}-[0-9]{4}$',title:"数字で入力して下さい。"
         .field
           .field-label
             = f.label :都道府県
