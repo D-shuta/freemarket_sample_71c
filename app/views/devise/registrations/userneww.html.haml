@@ -19,7 +19,7 @@
               .field-label
                 = f.label :ふりがな（名字）
               .field-input
-                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角カナで入力して下さい。"
+                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名字）
@@ -30,7 +30,7 @@
               .field-label
                 = f.label :ふりがな（名前）全角
               .field-input
-                = f.text_field :name,autocomplete: "family-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角カナで入力して下さい。"
+                = f.text_field :name,autocomplete: "family-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名前）全角
