@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   # ユーザー情報
     # ニックネームは必須（空にしない）
-  validates :nickname, presence: true, length: { maximum: 50 }
+    validates :nickname, presence: true, length: { maximum: 50 }
 
     # メールアドレスは 一意、            ＠とドメインを含む必要がある
   validates :email, uniqueness: true
