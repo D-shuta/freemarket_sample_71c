@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/61194189/76932377-221d9e80-692e-11ea-8595-af577a388e09.png)
 # freemarket_sample_71c
-
+test
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
