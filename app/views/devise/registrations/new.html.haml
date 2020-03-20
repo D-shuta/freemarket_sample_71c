@@ -1,31 +1,36 @@
 #account-page.account-page
   .account-page__inner.clearfix
     .account-page__inner--main
-      %h1住所情報登録
+      %h1 会員登録済みの方はこちらからログイン
+      = render "devise/shared/links"
       %br
+      %h2 ユーザー情報登録
     .account-page__inner--sabu
-      %h2＊登録した内容が受取の住所となります
-      
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
+        .field
+          .field-label
+            = f.label :'ニックネーム(50文字以内)'
+          .field-input
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname",placeholder:"ニックネーム入力＊必須",size:30,maxlength:"50",required:true
         .field__box
           .field__box-one
             .field
               .field-label
                 = f.label :ふりがな（名字）
               .field-input
-                = f.text_field :name, autofocus: true, autocomplete: "given-name", autocomplete: "off",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
+                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角かなで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名字）
               .field-input
-                = f.text_field :name,autocomplete: "given-name",placeholder:"名字入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
+                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"名字入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
           .field__box-two
             .field
               .field-label
                 = f.label :ふりがな（名前）全角
               .field-input
-                = f.text_field :name,autocomplete: "family-name", autocomplete: "off",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
+                = f.text_field :name,autocomplete: "family-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角カナで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名前）全角
@@ -33,23 +38,31 @@
                 = f.text_field :name,autocomplete: "family-name",placeholder:"名前入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
         .field
           .field-label
-            = f.label :郵便番号
+            = f.label :生年月日
           .field-input
-            = f.number_field :name,autocomplete: "off",placeholder:"郵便番号＊必須",size:10,required:true,pattern:'^[0-9]{3}[0-9]{4}$',title:"数字で入力して下さい。"
+            = f.text_field :birthday,autocomplete: "given-name",placeholder:"生年月日＊必須",size:15,pattern:"^[0-9]+$",title:"半角数字で入力して下さい。",required:true
         .field
           .field-label
-            = f.label :都道府県
-          .field-input
-            = f.text_field :name,autocomplete: "off",placeholder:"都、道、府、県",size:14,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
+          -#   = f.label :電話番号（ハイフン不要）
+          -# .field-input
+          -#   = f.text_field :phone_number,placeholder:"電話番号",size:15,pattern:'\d',title:"半角数字で入力して下さい。"
         .field
           .field-label
-            = f.label :市区町村
+            = f.label :メールアドレス
           .field-input
-            = f.text_field :name,autocomplete: "off",placeholder:"市、区、町、村",size:14,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
+            = f.email_field :email,placeholder:"メールアドレス＠＊必須", autocomplete: "email",size:30,required:true
         .field
           .field-label
-            = f.label :以下番地、建物名
+            = f.label :パスワード
+            %i (英数字7文字以上)
           .field-input
-            = f.text_field :name,autocomplete: "off",placeholder:"〇〇ビル〇〇号室",size:14,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
+            = f.password_field :password, autocomplete: "new-password",placeholder:"パスワード＊必須",size:30,required:true,minlength:'7'
+        .field
+          .field-label
+            = f.label :パスワード再入力（確認）
+          .field-input
+            = f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"もう一度入力してください＊必須",size:30,required:true,minlength:'7'
         .actions
-          = f.submit "登録", class: 'btn'
+          = f.submit "NextPage", class: 'btn'
+        .field
+          = link_to "仮","devise/registations/touroku"
