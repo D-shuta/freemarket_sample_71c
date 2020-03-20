@@ -19,7 +19,7 @@
               .field-label
                 = f.label :ふりがな（名字）
               .field-input
-                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角カナで入力して下さい。"
+                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角かなで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名字）
@@ -43,9 +43,9 @@
             = f.text_field :birthday,autocomplete: "given-name",placeholder:"生年月日＊必須",size:15,pattern:"^[0-9]+$",title:"半角数字で入力して下さい。",required:true
         .field
           .field-label
-            = f.label :電話番号（ハイフン不要）
-          .field-input
-            = f.text_field :phone_number,placeholder:"電話番号",size:15,pattern:'\d',title:"半角数字で入力して下さい。"
+          -#   = f.label :電話番号（ハイフン不要）
+          -# .field-input
+          -#   = f.text_field :phone_number,placeholder:"電話番号",size:15,pattern:'\d',title:"半角数字で入力して下さい。"
         .field
           .field-label
             = f.label :メールアドレス
@@ -66,4 +66,3 @@
           = f.submit "NextPage", class: 'btn'
         .field
           = link_to "仮","devise/registations/touroku"
-
