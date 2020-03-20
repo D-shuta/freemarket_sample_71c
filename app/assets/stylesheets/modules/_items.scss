@@ -1,0 +1,78 @@
+.new {
+  background-color: #f8f8f8;
+}
+
+.important {
+  color: red;
+}
+
+.new_item {
+  padding: 30px 0;
+  .new-top {
+    &__photo{
+      @include flex-justify(center);
+      text-align: center;      
+      &__show {
+        margin: 20px;
+        &--image {
+          @include width-height(300px, 300px);
+          background-color: red;    
+          &--icon {
+            @include width-height(250px, 250px);
+            @include font-size-color(40px, grey); 
+            background: white;
+            line-height: 250px;
+            border: 2px solid gainsboro;
+          }
+          &--file {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+
+  .new-main {
+    width: 78%;
+    margin: 0 auto;
+    &__name {
+      display: flex;
+      margin: 40px 0;
+      &--title {
+        font-size: 20px;
+        width: 260px;
+        line-height: 45px;
+      }
+      &--detail {
+        @include width-height(100%, 40px);
+        font-size: 20px;
+        padding: 0 10px;
+      }
+    }
+
+    &__content {
+      width: 100%;
+      display: flex;
+      &--detail {
+        height: 120px;
+        resize: vertical;
+      }
+    }
+    &__submit {
+      width: 100%;
+      text-align: center;
+      &--btn {
+        @include width-height(400px, 40px);
+        @include font-size-color(24px, white); 
+        margin: 0 auto; 
+        background-color: red;
+        cursor: pointer;
+        letter-spacing: 3px;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}

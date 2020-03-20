@@ -1,0 +1,19 @@
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex-justify($justype){
+  display: flex;
+  justify-content: $justype;
+}
+
+@mixin font-size-color($size, $color) {
+  font-size: $size;
+  color: $color;  
+}
+
+@mixin display-position($display, $position) {
+  display: $display;
+  position: $position;  
+}
