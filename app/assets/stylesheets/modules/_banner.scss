@@ -3,7 +3,8 @@
   height: 200px;
   padding: 100px 0;
   background-color: gray;
-  background-image: url(bg-appBanner-pict.png);
+  background-image: image-url("bg-appBanner-pict.png");
+
   background-size: cover;
   &__box {
     width: 100%;
