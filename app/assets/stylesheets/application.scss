@@ -1,7 +1,11 @@
 // トップページ
 @import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "mixin/item";
 @import "modules/header";
 @import "modules/main";
 @import "modules/banner";
 @import "modules/footer";
 //
+@import "modules/items"
