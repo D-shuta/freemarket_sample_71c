@@ -1,2 +1,79 @@
-
-
+.header {
+  min-height: 82px;
+  padding: 0 60px;
+  &__inner {
+    padding: 15px 0;
+    max-width: 1040px;
+    margin: 0 auto;
+    width: 100%;
+    &__header {
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      height: 50px;
+      display: flex;
+      &__icon {
+        margin-right: 30px;
+        width: 195px;
+        height: 50px;
+      }
+      &__sarch {
+        padding-bottom: 8px;
+        display: flex;
+        width: 100%;
+        &__input {
+          width: 100%;
+          height: 36px;
+          &__text {
+            padding-left: 5px;
+            height: 32px;
+            width: 100%;
+          }
+        }
+        &__submit {
+          margin-left: 9px;
+          width: 36px;
+          height: 36px;
+          &__btn {
+            width: 100%;
+            height: 100%;
+            background-color: #3ccace;
+            &__img {
+              width: 100%;
+              height: 70%;
+            }
+          }
+        }
+      }
+    }
+    &__nav {
+      font-size: 14px;
+      display: flex;
+      &__left {
+        .a {
+          color: black;
+          text-decoration: none;
+        }
+        display: flex;
+        &__first {
+        }
+        &__second {
+          margin-left: 50px;
+        }
+      }
+      &__right {
+        .a {
+          color: black;
+          text-decoration: none;
+        }
+        margin-left: auto;
+        display: flex;
+        &__first {
+          margin-right: 16px;
+        }
+        &__second {
+        }
+      }
+    }
+  }
+}
