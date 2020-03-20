@@ -1,0 +1,37 @@
+.header
+  千葉さん達と共通
+.main
+  .main__cade
+    .main__cade--date
+      クレジットカード 登録　変更
+      .main__cade--text
+        = form_for "#"do |f|
+          .field
+            .field-label
+              = f.label :名前
+            .field-input
+              = f.text_field :name, autofocus: true, autocomplete: "off",placeholder:"名前＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
+          .field
+            .field-label
+              = f.label :カード番号
+            .field-input
+              = f.text_field :name,autocomplete: "off",placeholder:"＊隙間を空けず入力",size:25,required:true,title:"半角数字で入力して下さい。",pattern:'\d{1,4}'
+          .field
+            .field-label
+              = f.label :カードの裏面番号
+            .field-input
+              = f.text_field :name,autocomplete: "off", autocomplete: "off",placeholder:"3~4桁",size:8,required:true,title:"半角数字で入力して下さい。",pattern:'\d{1,4}'
+          .field
+            .field-label
+              = f.label :有効期限（月）
+            .field-input
+              = f.text_field :name,autocomplete: "off",placeholder:"01",size:8,required:true,pattern:'\d{1,2}',title:"半角数字で入力して下さい。"
+          .field
+            .field-label
+              = f.label :有効期限（年）
+            .field-input
+              = f.text_field :name,autocomplete: "off",placeholder:"23",size:8,required:true,pattern:'\d{1,2}',title:"半角数字で入力して下さい。"
+          .actions
+            = f.submit "登録", class: 'btn'
+.footer
+  千葉さん達と共通
