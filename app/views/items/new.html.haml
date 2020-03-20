@@ -1,27 +1,28 @@
 .new
   = form_with model: @item, locale: true , class: 'new_item' do |f|
     .new-top
-      %ul.new-top__photo
-        %li.new-top__photo__show
-          = f.label :images, class: 'new-top__photo__show--image' do
-            .new-top__photo__show--image--file_field 
-              = f.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-            = icon('fas','camera', class:"new-top__photo__show--image--icon")
-        %li.new-top__photo__show
-          = f.label :images, class: 'new-top__photo__show--image' do
-            .new-top__photo__show--image--file_field 
-              = f.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-            = icon('fas','camera', class:"new-top__photo__show--image--icon")
-        %li.new-top__photo__show
-          = f.label :images, class: 'new-top__photo__show--image' do
-            .new-top__photo__show--image--file_field 
-              = f.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-            = icon('fas','camera', class:"new-top__photo__show--image--icon")
-        %li.new-top__photo__show
-          = f.label :images, class: 'new-top__photo__show--image' do
-            .new-top__photo__show--image--file_field 
-              = f.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-            = icon('fas','camera', class:"new-top__photo__show--image--icon")
+      = f.fields_for :images do |c|
+        %ul.new-top__photo
+          %li.new-top__photo__show
+            = c.label :images, class: 'new-top__photo__show--image' do
+              .new-top__photo__show--image--file_field 
+                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
+              = icon('fas','camera', class:"new-top__photo__show--image--icon")
+          %li.new-top__photo__show
+            = c.label :images, class: 'new-top__photo__show--image' do
+              .new-top__photo__show--image--file_field 
+                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
+              = icon('fas','camera', class:"new-top__photo__show--image--icon")
+          %li.new-top__photo__show
+            = c.label :images, class: 'new-top__photo__show--image' do
+              .new-top__photo__show--image--file_field 
+                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
+              = icon('fas','camera', class:"new-top__photo__show--image--icon")
+          %li.new-top__photo__show
+            = c.label :images, class: 'new-top__photo__show--image' do
+              .new-top__photo__show--image--file_field 
+                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
+              = icon('fas','camera', class:"new-top__photo__show--image--icon")
           
     .new-main
       .new-main__name
@@ -44,12 +45,6 @@
           %span.important ※必須
         .new-main__name--detail
           = f.text_field :category, { class:'new-main__name--detail', placeholder: '指定なし' }
-
-      .new-main__brand.new-main__name
-        .new-main__name--title
-          ブランド
-        .new-main__name--detail
-          = f.text_field :brand, { class:'new-main__name--detail', placeholder: '指定なし' }
 
       .new-main__state.new-main__name
         .new-main__name--title

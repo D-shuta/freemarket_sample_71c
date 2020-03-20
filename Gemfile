@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rubocop', require: false
 
 gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'fog-aws'
 
