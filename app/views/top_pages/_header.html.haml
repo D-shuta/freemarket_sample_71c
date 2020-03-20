@@ -1,34 +1,27 @@
-.show
-  .header
-    .header__text
-      FURIMA
-  .main
-    .main__box
-      .box__contents
-        .contents__top
-          .top__imeges
-            .imeges__title
-              product2
-            .images__image
-          .top__prices
-            .prices__price
-              ¥20000
-            .prices__tax-text
-              (税込み)送料込み
-          .top__comment
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
-          .top__table
-          .top__btns
-            .btns__left
-            .btns__right
-        .contents__bottom
-          .bottom__text
-          .bottom__btns
-            .btns__submit
-            .btns__buy
-        .contents__links
-          .links__top
-            .top__beck-page
-            .top__next-page
-          .links__bottom
-            メンズをもっとみる
+.header
+  .header__inner
+    .header__inner__header
+      .header__inner__header__icon
+        = link_to '#' do
+          = image_tag 'logo.png', alt: 'Logo', height: '40', width: '100%', class: ''
+      .header__inner__header__sarch
+        .header__inner__header__sarch__input
+          = form_for '#' do |f|
+            = f.text_field :content, class: 'header__inner__header__sarch__input__text', placeholder: 'キーワードから探す'
+        .header__inner__header__sarch__submit
+          = button_tag type: 'submit', class: 'header__inner__header__sarch__submit__btn' do
+            = image_tag 'icon-search 1.png', alt: 'img', class: 'header__inner__header__sarch__submit__btn__img'
+    .header__inner__nav
+      %ul.header__inner__nav__left
+        %li.header__inner__nav__left__first
+          カテゴリー
+        %li.header__inner__nav__left__second
+          = link_to '#' , class: 'a' do
+            ブランド
+      %ul.header__inner__nav__right
+        %li.header__inner__nav__right__first
+          = link_to '#' , class: 'a' do
+            ログイン
+        %li.header__inner__nav__right__second
+          = link_to '#' , class: 'a' do
+            新規会員登録
