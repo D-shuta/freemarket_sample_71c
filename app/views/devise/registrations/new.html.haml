@@ -1,5 +1,6 @@
 #account-page.account-page
-  .account-page__inner.clearfix
+  .header
+  .account-page__inner
     .account-page__inner--main
       %h1 会員登録済みの方はこちらからログイン
       = render "devise/shared/links"
@@ -19,23 +20,23 @@
               .field-label
                 = f.label :ふりがな（名字）
               .field-input
-                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角かなで入力して下さい。"
+                = f.text_field :first_name_kana,placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名字）
               .field-input
-                = f.text_field :name_kana,autocomplete: "given-name",placeholder:"名字入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
+                = f.text_field :first_name,placeholder:"名字入力＊必須",size:15,required:true,pattern:'/\A[ぁ-んァ-ン一-龥]/',title:"全角で入力して下さい。"
           .field__box-two
             .field
               .field-label
                 = f.label :ふりがな（名前）全角
               .field-input
-                = f.text_field :name,autocomplete: "family-name",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ァ-ヴ][ァ-ヴー・]*',title:"全角カナで入力して下さい。"
+                = f.text_field :name_kana,placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
             .field
               .field-label
                 = f.label :名前（名前）全角
               .field-input
-                = f.text_field :name,autocomplete: "family-name",placeholder:"名前入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]',title:"全角で入力して下さい。"
+                = f.text_field :name,placeholder:"名前入力＊必須",size:15,required:true,pattern:'/\A[ぁ-んァ-ン一-龥]/',title:"全角で入力して下さい。"
         .field
           .field-label
             = f.label :生年月日
@@ -63,6 +64,5 @@
           .field-input
             = f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"もう一度入力してください＊必須",size:30,required:true,minlength:'7'
         .actions
-          = f.submit "NextPage", class: 'btn'
-        .field
-          = link_to "仮","devise/registations/touroku"
+          = f.submit "NextPage", class: 'touroku__btn'
+
