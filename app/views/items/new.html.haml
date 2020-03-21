@@ -72,9 +72,8 @@
           配送元の地域
           %span.important ※必須
         .new-main__name--detail
-          = f.text_field :region, { class:'new-main__name--detail', placeholder: '東京都' }
+          = f.collection_select :prefecture_id,  Prefecture.all, :id, :name, {}, { class: 'new-main__name--detail--prefecture' }
 
       .new-main__submit
         = f.submit '出品する', class: 'new-main__submit--btn'
         
-
