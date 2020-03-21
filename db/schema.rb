@@ -50,9 +50,6 @@ ActiveRecord::Schema.define(version: 2020_03_20_112102) do
     t.integer "postage", null: false
     t.integer "shipping_date", null: false
     t.integer "price", null: false
-    t.string "region", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
