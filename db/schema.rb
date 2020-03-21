@@ -43,15 +43,6 @@ ActiveRecord::Schema.define(version: 2020_03_20_112102) do
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "content", null: false
-    t.string "state", null: false
-    t.integer "postage", null: false
-    t.integer "shipping_date", null: false
-    t.integer "price", null: false
-  end
-
   create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_destinaition_name", null: false
     t.string "destinaition_name", null: false
