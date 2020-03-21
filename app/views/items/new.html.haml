@@ -1,28 +1,15 @@
 .new
-  = form_with model: @item, locale: true , class: 'new_item' do |f|
+  = form_with(model: @item, local: true , class: 'new_item') do |f|
+
     .new-top
-      = f.fields_for :images do |c|
+      = f.fields_for :images do |i|
         %ul.new-top__photo
           %li.new-top__photo__show
-            = c.label :images, class: 'new-top__photo__show--image' do
+            = i.label :image, class: 'new-top__photo__show--image' do
               .new-top__photo__show--image--file_field 
-                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
+                = i.file_field :image, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
               = icon('fas','camera', class:"new-top__photo__show--image--icon")
-          %li.new-top__photo__show
-            = c.label :images, class: 'new-top__photo__show--image' do
-              .new-top__photo__show--image--file_field 
-                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-              = icon('fas','camera', class:"new-top__photo__show--image--icon")
-          %li.new-top__photo__show
-            = c.label :images, class: 'new-top__photo__show--image' do
-              .new-top__photo__show--image--file_field 
-                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-              = icon('fas','camera', class:"new-top__photo__show--image--icon")
-          %li.new-top__photo__show
-            = c.label :images, class: 'new-top__photo__show--image' do
-              .new-top__photo__show--image--file_field 
-                = c.file_field :images, multiple: true, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-              = icon('fas','camera', class:"new-top__photo__show--image--icon")
+
           
     .new-main
       .new-main__name
@@ -39,12 +26,12 @@
         .new-main__content--detail.new-main__name--detail
           = f.text_area :content, { class:'new-main__content--detail new-main__name--detail', placeholder: '・色・素材・重さ・定価・注意点などを記載しましょう'}
 
-      .new-main__category.new-main__name
-        .new-main__name--title
-          カテゴリ
-          %span.important ※必須
-        .new-main__name--detail
-          = f.text_field :category, { class:'new-main__name--detail', placeholder: '指定なし' }
+      -# .new-main__category.new-main__name
+      -#   .new-main__name--title
+      -#     カテゴリ
+      -#     %span.important ※必須
+      -#   .new-main__name--detail
+      -#     = f.text_field :category, { class:'new-main__name--detail', placeholder: '指定なし' }
 
       .new-main__state.new-main__name
         .new-main__name--title
@@ -73,6 +60,13 @@
           %span.important ※必須
         .new-main__name--detail
           = f.collection_select :prefecture_id,  Prefecture.all, :id, :name, {}, { class: 'new-main__name--detail--prefecture' }
+
+      .new-main__state.new-main__name
+        .new-main__name--title
+          商品の価格
+          %span.important ※必須
+        .new-main__name--detail
+          = f.text_field :price, { class:'new-main__name--detail', placeholder: '¥300 ~ ¥2,000,000' }  
 
       .new-main__submit
         = f.submit '出品する', class: 'new-main__submit--btn'
