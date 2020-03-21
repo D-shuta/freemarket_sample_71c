@@ -65,7 +65,7 @@
           配送までの日数
           %span.important ※必須
         .new-main__name--detail
-          = f.text_field :shippin_date, { class:'new-main__name--detail', placeholder: '支払い後、１〜２日で発送' }
+          = f.collection_select :shipping_id,  Shipping.all, :id, :duration, {}, { class: 'new-main__name--detail--prefecture' }
 
       .new-main__region.new-main__name
         .new-main__name--title

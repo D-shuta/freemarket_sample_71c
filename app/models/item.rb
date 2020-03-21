@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+  belongs_to_active_hash :shipping
   
   validates :name, presence: true, length: { maximum: 40 }
   validates :content, presence: true, length: { maximum: 1000 }
