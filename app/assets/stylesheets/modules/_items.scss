@@ -48,6 +48,9 @@
         @include width-height(100%, 40px);
         font-size: 20px;
         padding: 0 10px;
+        &--prefecture {
+          @include width-height(220px, 47px);
+        }
       }
     }
 
