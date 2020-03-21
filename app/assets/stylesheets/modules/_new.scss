@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+#account-page.account-page{
+  width: 100%;
+  height: 100vh;
+  .account-page__inner{
+    width: 100%;
+    height: calc(100vh - 100px);
+    padding: 0 100px;
+    background-color: rgb(247, 247, 247);
+    font-size: 20px;
+    text-align: center;
+    &--main{
+      width: 100%;
+      height: 20%;
+      font-size: 24px;
+    }
+    &--sabu{
+      width: 100%;
+      height:80% ;
+    }
+    .field__box{
+      display: inline-flex;
+      &-two{
+        margin-left: 10px;
+      }
+      
+    }
+      }
+    }
+
+
+}
+
+// sessionsのnew.html.hamlのsassを追記
+
+
