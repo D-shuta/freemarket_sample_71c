@@ -51,9 +51,8 @@
         .new-main__name--title
           カテゴリ
           %span.important ※必須
-        .new-main__name--detail
-          = f.collection_select :category_id, @category_parent_array,:id,:name,{prompt: "---"},{class: 'sell__item-categry', id: 'parent_category'}
-          = f.text_field :category, { class:'new-main__name--detail', placeholder: '指定なし' }
+        .sell-category-box
+          = f.collection_select :category_id, @category_parent_array,:id,:name,{prompt: "---"},{class: 'sell__item-categry', id: 'parent_category'}       
 
       .new-main__state.new-main__name
         .new-main__name--title
