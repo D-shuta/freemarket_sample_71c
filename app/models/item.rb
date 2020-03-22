@@ -9,7 +9,8 @@ class Item < ApplicationRecord
   validates :shipping_id, presence: true
   validates :prefecture_id, presence: true
   validates :price, presence: true
-
+  validates :images, presence: true
+  
   has_many :images
   accepts_nested_attributes_for :images, allow_destroy: true
 end
