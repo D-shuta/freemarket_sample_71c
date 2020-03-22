@@ -40,12 +40,20 @@
         .new-main__content--detail.new-main__name--detail
           = f.text_area :content, { class:'new-main__content--detail new-main__name--detail', placeholder: '・色・素材・重さ・定価・注意点などを記載しましょう'}
 
-      -# .new-main__category.new-main__name
-      -#   .new-main__name--title
-      -#     カテゴリ
-      -#     %span.important ※必須
-      -#   .new-main__name--detail
-      -#     = f.text_field :category, { class:'new-main__name--detail', placeholder: '指定なし' }
+      .new-main__state.new-main__name
+        .new-main__name--title
+          ブランド
+          %span.important
+        .new-main__name--detail
+          = f.text_field :brand, { class:'new-main__name--detail', placeholder: '※任意' }              
+
+      .new-main__category.new-main__name
+        .new-main__name--title
+          カテゴリ
+          %span.important ※必須
+        .new-main__name--detail
+          = f.collection_select :category_id, @category_parent_array,:id,:name,{prompt: "---"},{class: 'sell__item-categry', id: 'parent_category'}
+          = f.text_field :category, { class:'new-main__name--detail', placeholder: '指定なし' }
 
       .new-main__state.new-main__name
         .new-main__name--title
