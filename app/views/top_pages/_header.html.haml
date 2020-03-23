@@ -11,16 +11,18 @@
         = button_tag :submit, class: 'main__sarch__submit' do
           = image_tag 'icon-search 1.png', alt: 'img', class: 'main__sarch__submit--btn'
     .nav
-      %ul.nav__left
-        %li.nav__left--first
-          カテゴリー
-        %li.nav__left--second
-          = link_to '#' , class: 'a' do
-            ブランド
-      %ul.nav__right
+      %ul.nav__right.ul_Nav
+      - if user_signed_in?
         %li.nav__right--first
-          = link_to '#' , class: 'a' do
+          = link_to  user_registration_path, class: 'a', method: :delete do
+            ログアウト
+        %li.nav__right--second.ul_Nav
+          = link_to "#" , class: 'a' do
+            マイページ      
+      - else
+        %li.nav__right--first.ul_Nav
+          = link_to  user_session_path, class: 'a' do
             ログイン
-        %li.nav__right--second
-          = link_to '#' , class: 'a' do
+        %li.nav__right--second.ul_Nav
+          = link_to new_user_registration_path , class: 'a' do
             新規会員登録
