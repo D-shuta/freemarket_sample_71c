@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create]
 
+
+  def index
+  end
+
   def new 
     @item = Item.new
     @item.images.new
