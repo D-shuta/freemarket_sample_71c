@@ -39,6 +39,7 @@
     &__name {
       display: flex;
       margin: 40px 0;
+      position: relative;
       &--title {
         font-weight: bold;
         font-size: 20px;
@@ -125,6 +126,9 @@
   font-weight: bold;
 }
 
-
+.sell__item-categry {
+  width: 220px;
+  height: 47px;
+}
 
 
