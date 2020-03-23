@@ -1,27 +1,26 @@
 .header
   .header__inner
-    .header__inner__header
-      .header__inner__header__icon
+    .main
+      .main__icon
         = link_to '#' do
-          = image_tag 'logo.png', alt: 'Logo', height: '40', width: '100%', class: ''
-      .header__inner__header__sarch
-        .header__inner__header__sarch__input
+          = image_tag 'logo.png', alt: 'Logo', class: 'main__icon--img'
+      .main__sarch
+        .main__sarch__input
           = form_for '#' do |f|
-            = f.text_field :content, class: 'header__inner__header__sarch__input__text', placeholder: 'キーワードから探す'
-        .header__inner__header__sarch__submit
-          = button_tag type: 'submit', class: 'header__inner__header__sarch__submit__btn' do
-            = image_tag 'icon-search 1.png', alt: 'img', class: 'header__inner__header__sarch__submit__btn__img'
-    .header__inner__nav
-      %ul.header__inner__nav__left
-        %li.header__inner__nav__left__first
+            = f.text_field :content, class: 'main__sarch__input--text', placeholder: 'キーワードから探す'
+        = button_tag :submit, class: 'main__sarch__submit' do
+          = image_tag 'icon-search 1.png', alt: 'img', class: 'main__sarch__submit--btn'
+    .nav
+      %ul.nav__left
+        %li.nav__left--first
           カテゴリー
-        %li.header__inner__nav__left__second
+        %li.nav__left--second
           = link_to '#' , class: 'a' do
             ブランド
-      %ul.header__inner__nav__right
-        %li.header__inner__nav__right__first
+      %ul.nav__right
+        %li.nav__right--first
           = link_to '#' , class: 'a' do
             ログイン
-        %li.header__inner__nav__right__second
+        %li.nav__right--second
           = link_to '#' , class: 'a' do
             新規会員登録
