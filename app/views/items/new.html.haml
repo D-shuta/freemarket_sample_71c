@@ -2,14 +2,28 @@
   = form_with(model: @item, local: true , class: 'new_item') do |f|
 
     .new-top
-      = f.fields_for :images do |i|
-        %ul.new-top__photo
-          %li.new-top__photo__show
-            = i.label :image, class: 'new-top__photo__show--image' do
-              .new-top__photo__show--image--file_field 
-                = i.file_field :image, class: 'new-top__photo__show--image--file_field--file', style: 'display: none;'   
-              = icon('fas','camera', class:"new-top__photo__show--image--icon")
 
+      #image-box
+        #previews
+          - if @item.persisted?
+            - @item.images.each_with_index do |pic, i|
+              = image_tag pic.image.url, data: { index: i }, width: "200", height: '200'
+        = f.fields_for :images do |pic|
+          .announce_picuture
+            = icon('fas','camera')
+            １枚以上
+            %span.important ※必須
+            (最大４枚まで)
+          .js-file_group{"data-index" => "#{pic.index}"}
+            = pic.file_field :image, class: 'js-file'
+            %br/
+            %span.js-remove 削除
+          - if @item.persisted?
+            = pic.check_box :_destroy, data:{ index: pic.index }, class: 'hidden-destroy'
+        - if @item.persisted?
+          .js-file_group{"data-index" => "#{@item.images.count}"}
+            = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+            .js-remove 削除
           
     .new-main
       .new-main__name
@@ -26,12 +40,19 @@
         .new-main__content--detail.new-main__name--detail
           = f.text_area :content, { class:'new-main__content--detail new-main__name--detail', placeholder: '・色・素材・重さ・定価・注意点などを記載しましょう'}
 
-      -# .new-main__category.new-main__name
-      -#   .new-main__name--title
-      -#     カテゴリ
-      -#     %span.important ※必須
-      -#   .new-main__name--detail
-      -#     = f.text_field :category, { class:'new-main__name--detail', placeholder: '指定なし' }
+      .new-main__state.new-main__name
+        .new-main__name--title
+          ブランド
+          %span.important
+        .new-main__name--detail
+          = f.text_field :brand, { class:'new-main__name--detail', placeholder: '※任意' }              
+
+      .new-main__category.new-main__name
+        .new-main__name--title
+          カテゴリ
+          %span.important ※必須
+        .sell-category-box
+          = f.collection_select :category_id, @category_parent_array,:id,:name,{prompt: "---"},{class: 'sell__item-categry', id: 'parent_category'}       
 
       .new-main__state.new-main__name
         .new-main__name--title
