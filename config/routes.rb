@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     end
   end
   root to: 'top_pages#index'
-  resources :items, only: [:new, :create]
-  resources :categories, only: [:new, :create]
-  resources :brands, only: [:index]
+  resources :items, only: [:new, :create] do
+    collection do
+      get  'get_category_children', defaults: { format: 'json' }
+      get  'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :cards, only: [:new, :destroy, :edit, :update]
   resources :user_addresses, only: [:new, :create, :edit, :update]
 end

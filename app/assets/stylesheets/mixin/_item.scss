@@ -17,3 +17,8 @@
   display: $display;
   position: $position;  
 }
+
+@mixin center_Position {
+  width: 400px;
+  margin: 10px auto;
+}
