@@ -12,8 +12,6 @@ class UserAddress < ApplicationRecord
   validates :municipality, presence: true
     # 番地必須
   validates :address, presence: true
-    # マンション、ビル名任意
-  
-    # 届け先電話番号任意
-  
+
+  belongs_to :user, optional: true
 end

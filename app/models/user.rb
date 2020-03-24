@@ -19,4 +19,7 @@ class User < ApplicationRecord
   validates :name_kana, :first_name_kana, presence: true
     # 生年月日は必須
   validates :birthday, presence: true
+
+  has_one :user_address
+  accepts_nested_attributes_for :user_address
 end
