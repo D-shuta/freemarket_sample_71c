@@ -3,7 +3,7 @@
   .account-page__inner
     .account-page__inner--main
       %h1 会員登録済みの方はこちらからログイン
-      = link_to "ログイン", user_session
+      = link_to "ログイン", new_user_session_path
       %h2 ユーザー情報登録
     .account-page__inner--sabu
       = form_for @user, url: step2_signup_index_path, method: :get do |f|
