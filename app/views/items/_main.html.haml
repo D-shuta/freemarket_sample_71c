@@ -90,96 +90,44 @@
           ピックアップカテゴリー
         .header__text
           新規投稿商品
-      %ul.list
-        %li.first
+    %ul.List      
+      - @items.each do |item|
+        %li.First
           = link_to '#', class: 'a' do
             .img
-              = image_tag 'a007.png', alt: '', height: '100%', width: '100%', class: ''
+              = image_tag "#{item.images.first.image}",class:"pic_up_container__products__box--image"
             .info
               .info__left
                 .info__left--name
-                  product3
+                  = item.name
                 .info__left--price
-                  3000円
+                  = item.price
+                  円
                 .info__left--tax-in
                   （税込み）
               .info__right
-                ★ 0
-        %li.first
-          = link_to '#', class: 'a'do
-            .img
-              = image_tag 'a004.png', alt: '', height: '100%', width: '100%', class: ''
-              .info
-                .info__left
-                  .info__left--name
-                    product2
-                  .info__left--price
-                    2000円
-                  .info__left--tax-in
-                    （税込み）
-                .info__right
-                  ★ 0
-        %li.first
-          = link_to '#', class: 'a' do
-            .img
-              = image_tag 'a001.png', alt: '', height: '100%', width: '100%', class: ''
-            .info
-              .info__left
-                .info__left--name
-                  product1
-                .info__left--price
-                  1000円
-                .info__left--tax-in
-                  （税込み）
-              .info__right
-                ★ 0
+                ★ 2
+        
   .main__box6
     .inner
       .header
         .header__title
-          ピックアップブランド
+          ピックアップアイテム
         .header__text
-          アーカイバ
-      %ul.list
-        %li.first
+          注目商品
+    %ul.List
+      - @recommend.each do |reco|
+        %li.First
           = link_to '#', class: 'a' do
             .img
-              = image_tag 'a007.png', alt: '', height: '100%', width: '100%', class: ''
+              = image_tag "#{reco.images.first.image}",class:"pic_up_container__products__box--image"
             .info
               .info__left
                 .info__left--name
-                  product3
+                  = reco.name
                 .info__left--price
-                  3000円
+                  = reco.price
                 .info__left--tax-in
                   （税込み）
               .info__right
-                ★ 0
-        %li.first
-          = link_to '#', class: 'a' do
-            .img
-              = image_tag 'a004.png', alt: '', height: '100%', width: '100%', class: ''
-            .info
-              .info__left
-                .info__left--name
-                  product2
-                .info__left--price
-                  2000円
-                .info__left--tax-in
-                  （税込み）
-              .info__right
-                ★ 0
-        %li.first
-          = link_to '#', class: 'a' do
-            .img
-              = image_tag 'a001.png', alt: '', height: '100%', width: '100%', class: ''
-            .info
-              .info__left
-                .info__left--name
-                  product1
-                .info__left--price
-                  1000円
-                .info__left--tax-in
-                  （税込み）
-              .info__right
-                ★ 0
+                ★ 4

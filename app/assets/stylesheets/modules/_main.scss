@@ -355,3 +355,28 @@
 }
 
 
+.List {
+  display: flex;
+  justify-content: center;
+}
+
+.First {
+  margin: 0 20px;
+  width: 200px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+.img {
+  width: 200px;
+  height: 200px;
+  > img {
+    width: 200px;
+    height: 200px;
+  }
+}
+.info__left--tax-in {
+  font-size: 10px;
+}
