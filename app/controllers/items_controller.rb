@@ -1,9 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create]
+  before_action :move_to_index, only: [:edit, :update]
 
 
   def index
-    @items = Item.includes(:images, :category, :seller).order('created_at DESC').limit(3)
+    @items = Item.where(buyer_id: nil).includes(:images, :category, :seller).order('created_at DESC').limit(3)
+    @recommend = Item.where(buyer_id: nil).includes(:images, :category, :seller).order("RAND()").limit(3)
+
   end
 
   def new 
@@ -46,6 +49,11 @@ class ItemsController < ApplicationController
       :category_id, :brand,
       images_attributes: [:image] 
     ).merge(seller_id: current_user.id)
+  end
+
+  def move_to_index
+    @product = Product.find_by(params[:id])
+    redirect_to action: :index unless user_signed_in? && current_user.id != @product.seller_id 
   end
 end
 
