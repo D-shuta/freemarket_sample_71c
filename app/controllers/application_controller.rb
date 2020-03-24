@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   def show
   end
 
+  # def after_sign_up_path_for(resource)
+  #   new_user_address_path
+  # end
+
   private
 
   def configure_permitted_parameters

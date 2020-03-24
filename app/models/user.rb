@@ -20,6 +20,8 @@ class User < ApplicationRecord
     # 生年月日は必須
   validates :birthday, presence: true
 
+  has_one :user_address
+  accepts_nested_attributes_for :user_address
 
   has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
   has_many :sale_items, -> { where("buyer_id is NULL") }, foreign_key: "seller_id", class_name: "Item"

@@ -11,6 +11,7 @@ class CreateUserAddresses < ActiveRecord::Migration[5.2]
       t.string     :address, null: false
       t.string     :building_name
       t.integer    :phone_number
+      t.references :users, foreign_key: true
       t.timestamps
     end
   end
