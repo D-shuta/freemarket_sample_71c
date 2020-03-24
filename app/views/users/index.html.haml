@@ -1,0 +1,24 @@
+.headers
+  = image_tag "logo.png",width: "200",height:"100"
+.conten
+  .conten__main
+    .conten__main--box
+      .conten__main--name
+        nickname
+        -# current_useridで呼ぶ
+      .conten__main--page
+        さんのマイページ
+  .conten__sabu
+    .conten__sabu--box
+      .conten__sabu--cade
+        クレジットカード情報
+        %br
+        = link_to "#"do
+          登録
+          -# cade.html.haml
+        %br
+        = link_to "#"do
+          変更
+      .conten__sabu--out
+        = link_to "/"do
+          ログアウト
