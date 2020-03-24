@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   end
   resources :cards, only: [:new, :destroy, :edit, :update]
   resources :user_addresses, only: [:new, :create, :edit, :update]
+  resources :users, only: [:index]
 end
