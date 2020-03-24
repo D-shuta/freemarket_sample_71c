@@ -1,3 +1,11 @@
+a {
+  color: black;
+  text-decoration: none;
+}
+.ul_Nav {
+  list-style: none;
+}
+
 .header {
   min-height: 82px;
   padding: 0 60px;
@@ -47,10 +55,6 @@
       font-size: 14px;
       display: flex;
       &__left {
-        .a {
-          color: black;
-          text-decoration: none;
-        }
         display: flex;
         &--first {
           list-style: none;
@@ -62,10 +66,6 @@
       }
       &__right {
         list-style: none;
-        .a {
-          color: black;
-          text-decoration: none;
-        }
         margin-left: auto;
         display: flex;
         &--first {
@@ -76,7 +76,4 @@
       }
     }
   }
-}
-.ul_Nav {
-  list-style: none;
 }
