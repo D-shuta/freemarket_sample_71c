@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
   root to: 'top_pages#index'
   resources :items, only: [:new, :create] do
+  root to: 'items#index'
+  
+  resources :items do
     collection do
       get  'get_category_children', defaults: { format: 'json' }
       get  'get_category_grandchildren', defaults: { format: 'json' }
