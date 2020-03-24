@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_122623) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,9 +72,11 @@ ActiveRecord::Schema.define(version: 2020_03_23_122623) do
     t.string "address", null: false
     t.string "building_name"
     t.integer "phone_number"
+    t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.index ["users_id"], name: "index_user_addresses_on_users_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,4 +98,5 @@ ActiveRecord::Schema.define(version: 2020_03_23_122623) do
   end
 
   add_foreign_key "images", "items"
+  add_foreign_key "user_addresses", "users", column: "users_id"
 end
