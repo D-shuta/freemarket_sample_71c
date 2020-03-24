@@ -1,0 +1,112 @@
+.show
+  .header
+    %ul.lists
+      %li.list
+        = link_to "#",class:'link' do
+          FURIMA
+      %li.list    
+        >
+      %li.list
+        = link_to "#",class:'link' do
+          メンズ 
+      %li.list    
+        >    
+      %li.list
+        = link_to "#",class:'link' do
+          ジャケット/アウター
+      %li.list    
+        >    
+      %li.list
+        = link_to "#",class:'link' do
+          ノーカラージャケット
+      %li.list  
+        >    
+      %li.last-list
+        puroduct2
+  .main
+    .main__box
+      .main__box__contents
+        .main__box__contents__top
+          .main__box__contents__top__images
+            .main__box__contents__top__images__title
+              product2
+            .main__box__contents__top__images__image
+              %ul.lists-main
+                %li.list-main
+                  = image_tag 'a004.png', alt: 'image', height: '100%', width: '90%', class: 'image'
+                %ul.lists-sub
+                  %li.list-sub
+                    = image_tag 'a004', alt: 'image', height: '100%', width: '100%', class: 'image'
+                  %li.list-sub
+                    = image_tag 'a005', alt: 'image', height: '100%', width: '100%', class: 'image'
+                  %li.list-sub
+                    = image_tag 'a006', alt: 'image', height: '100%', width: '100%', class: 'image'
+          .main__box__contents__top__prices
+            .main__box__contents__top__prices__price
+              ¥20000
+            .main__box__contents__top__prices__tax-text
+              (税込み)送料込み
+          .main__box__contents__top__comment
+            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰が逝った
+          .main__box__contents__top__table
+            %table.table
+              %tr.tr
+                %th.th 出品者
+                %td.td hoge
+              %tr.tr
+                %th.th カテゴリー
+                %td.td
+                  = link_to "#",class:'link' do
+                    メンズ
+                    %br ジャケット/アウター 
+                    ノーカラージャケット
+              %tr.tr
+                %th.th ブランド
+                %td.td
+              %tr.tr
+                %th.th 商品のサイズ
+                %td.td
+              %tr.tr
+                %th.th 商品の状態
+                %td.td 新品/未使用
+              %tr.tr
+                %th.th 配送料の負担
+                %td.td 着払い (購入者負担) 
+              %tr.tr
+                %th.th 発送元の地域
+                %td.td 
+                  = link_to "#",class:'link' do
+                    青森県
+              %tr.tr
+                %th.th 発送元の目安
+                %td.td 1-2日で発送
+          .main__box__contents__top__btns
+            %button{type: "button", onClick: "location.href= '#'", class:"favorite"}
+              %i.fa.fa-star
+              お気に入り 0
+            %button{type: "button", onClick: "location.href= '#'", class:"report"}
+              %i.fas.fa-flag
+              不適切な商品の通報
+        .main__box__contents__bottom
+          = form_with url: "#", local: true do |f|
+            .main__box__contents__bottom__text
+              = f.text_area :content, class:'text-area'
+              %p.p  
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            .main__box__contents__bottom__btns
+              %button{type: "submit", class: "submit"}
+                %i.fas.fa-comment
+                  コメントする
+              %button{type: "button", onClick: "location.href= '#'", class: "buy"}
+                %i.fas.fa-shopping-cart
+                  購入する
+        .main__box__contents__links
+          .main__box__contents__links__top
+            = link_to "#",class:'link' do
+              < 前の商品
+            = link_to  "#",class:'link' do
+              次の商品 >
+          .main__box__contents__links__bottom
+            = link_to "#",class:'link' do
+              メンズをもっとみる
