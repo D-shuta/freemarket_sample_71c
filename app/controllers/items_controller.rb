@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create]
-  before_action :move_to_index, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
 
 
   def index
@@ -82,8 +82,10 @@ class ItemsController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:id])
-    redirect_to action: :index unless user_signed_in? && current_user.id != @item.seller_id
-    flash[:alert] = "指定のページにはアクセス出来ません" 
+    
+    return if user_signed_in? && current_user.id == @item.seller_id
+    redirect_to action: :index
+    flash[:alert] = "指定のページにはアクセスできません"
   end
 end
 
