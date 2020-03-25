@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:update, :show]
 
 
   def index
@@ -33,6 +34,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = @item.seller
+    @category = @item.category
   end
 
   def get_category_children
@@ -86,6 +89,10 @@ class ItemsController < ApplicationController
     return if user_signed_in? && current_user.id == @item.seller_id
     redirect_to action: :index
     flash[:alert] = "指定のページにはアクセスできません"
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
 
