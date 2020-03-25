@@ -97,7 +97,7 @@
     %ul.List      
       - @items.each do |item|
         %li.First
-          = link_to '#', class: 'a' do
+          = link_to item_path(item), class: 'a' do
             .img
               = image_tag "#{item.images.first.image}",class:"pic_up_container__products__box--image"
             .info

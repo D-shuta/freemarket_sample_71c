@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :shipping  
   
-  has_many :images
+  has_many :images, dependent: :delete_all
   accepts_nested_attributes_for :images, allow_destroy: true
 
   belongs_to :category
