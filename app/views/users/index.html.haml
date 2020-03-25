@@ -1,3 +1,5 @@
+
+
 .headers
   = image_tag "logo.png",width: "200",height:"100"
 .conten
@@ -7,18 +9,20 @@
         nickname
         -# current_useridで呼ぶ
       .conten__main--page
-        さんのマイページ
+        様のマイページ
   .conten__sabu
-    .conten__sabu--box
-      .conten__sabu--cade
-        クレジットカード情報
-        %br
-        = link_to "#"do
-          登録
+    .conten__sabu__box
+      .conten__sabu__box__cade
+        .conten__sabu__box__cade__title
+          %i.far.fa-credit-card
+            クレジットカード
+        .conten__sabu__box__cade__btn   
+          = link_to "#", class: "conten__sabu__box__cade__btn__A" do
+            登録
           -# cade.html.haml
-        %br
-        = link_to "#"do
-          変更
+          %br
+          = link_to "#", class: "A" do
+            変更
       .conten__sabu--out
         = link_to "/"do
           ログアウト
