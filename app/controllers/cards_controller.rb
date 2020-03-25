@@ -21,7 +21,7 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.create(
       card: params['payjp-token'],
       )
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id:)
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id)
       #作られたら完了画面へ
       if @card.save
         redirect_to action: "show"
