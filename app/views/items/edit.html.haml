@@ -1,0 +1,96 @@
+.new
+  = form_with(model: @item, local: true , class: 'new_item') do |f|
+
+    .new-top
+
+      #image-box
+        #previews
+          - if @item.persisted?
+            - @item.images.each_with_index do |pic, i|
+              = image_tag pic.image.url, data: { index: i }, width: "200", height: '200'
+        = f.fields_for :images do |pic|
+          .announce_picuture
+            = icon('fas','camera')
+            １枚以上
+            %span.important ※必須
+            (最大４枚まで)
+          .js-file_group{"data-index" => "#{pic.index}"}
+            = pic.file_field :image, class: 'js-file'
+            %br/
+            %span.js-remove 削除
+          - if @item.persisted?
+            = pic.check_box :_destroy, data:{ index: pic.index }, class: 'hidden-destroy'
+        - if @item.persisted?
+          .js-file_group{"data-index" => "#{@item.images.count}"}
+            = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+            .js-remove 削除
+          
+    .new-main
+      .new-main__name
+        .new-main__name--title
+          商品名
+          %span.important ※必須
+        .new-main__name--detail
+          = f.text_field :name, { class:'new-main__name--detail', placeholder: '40文字まで' }
+
+      .new-main__content.new-main__name
+        .new-main__content--title.new-main__name--title
+          商品説明
+          %span.important ※必須        
+        .new-main__content--detail.new-main__name--detail
+          = f.text_area :content, { class:'new-main__content--detail new-main__name--detail', placeholder: '・色・素材・重さ・定価・注意点などを記載しましょう'}
+
+      .new-main__state.new-main__name
+        .new-main__name--title
+          ブランド
+          %span.important
+        .new-main__name--detail
+          = f.text_field :brand, { class:'new-main__name--detail', placeholder: '※任意' }              
+
+      .new-main__category.new-main__name
+        .new-main__name--title
+          カテゴリ
+          %span.important ※必須
+        .sell-category-box
+          = f.collection_select :category_id, @category_parent_array,:id,:name,{prompt: "---"},{class: 'sell__item-categry', id: 'parent_category'} 
+          = f.collection_select :category_id, @item_children_category, :id, :name, {prompt: ""},{class: 'sell__item-categry', id: 'parent_category'}
+          = f.collection_select :category_id, @item_grandcildren_category, :id, :name, {prompt: ""}, {class: 'sell__item-categry', id: 'parent_category'}
+
+
+      .new-main__state.new-main__name
+        .new-main__name--title
+          商品の状態
+          %span.important ※必須
+        .new-main__name--detail
+          = f.text_field :state, { class:'new-main__name--detail', placeholder: '新品、未使用' }      
+   
+      .new-main__postage.new-main__name
+        .new-main__name--title
+          配送料金
+          %span.important ※必須
+        .new-main__name--detail
+          = f.text_field :postage, { class:'new-main__name--detail', placeholder: '８００円' }
+             
+      .new-main__shipping-date.new-main__name
+        .new-main__name--title
+          配送までの日数
+          %span.important ※必須
+        .new-main__name--detail
+          = f.collection_select :shipping_id,  Shipping.all, :id, :duration, {}, { class: 'new-main__name--detail--prefecture' }
+
+      .new-main__region.new-main__name
+        .new-main__name--title
+          配送元の地域
+          %span.important ※必須
+        .new-main__name--detail
+          = f.collection_select :prefecture_id,  Prefecture.all, :id, :name, {}, { class: 'new-main__name--detail--prefecture' }
+
+      .new-main__state.new-main__name
+        .new-main__name--title
+          商品の価格
+          %span.important ※必須
+        .new-main__name--detail
+          = f.text_field :price, { class:'new-main__name--detail', placeholder: '¥300 ~ ¥2,000,000' }  
+
+      .new-main__submit
+        = f.submit '出品する', class: 'new-main__submit--btn'

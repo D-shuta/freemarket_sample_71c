@@ -6,7 +6,6 @@ Rails.application.routes.draw do
       get 'step2' # step1とstep2を同時に保存
     end
   end
-  resources :items, only: [:new, :create, :show]
   root to: 'items#index'
   
   resources :items do

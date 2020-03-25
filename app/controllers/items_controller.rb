@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create]
-  before_action :move_to_index, only: [:edit, :update]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:update, :show]
 
 
   def index
@@ -33,9 +34,37 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = @item.seller
+    @category = @item.category
   end
 
+  def get_category_children
+    @category_children = Category.find_by(id: params[:parent_id], ancestry: nil).children
+  end
 
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end
+
+  def edit
+    @item.images
+    @category_parent_array = Category.where(ancestry: nil)
+    @item_root_category = @item.category.root
+    @item_children_category = @item_root_category.children
+    item_parent_category = @item.category.parent
+    @item_grandcildren_category = item_parent_category.children
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      redirect_to edit_item_path(@item)
+    end
+  end
+
+  
 
   private
 
@@ -50,13 +79,20 @@ class ItemsController < ApplicationController
     params.require(:item).permit(
       :name, :content, :state, :postage, :shipping_id, :prefecture_id, :price,
       :category_id, :brand,
-      images_attributes: [:image] 
+      images_attributes: [:image, :_destroy, :id] 
     ).merge(seller_id: current_user.id)
   end
 
   def move_to_index
-    @item = Items.find(params[:id])
-    redirect_to action: :index unless user_signed_in? && current_user.id != @product.seller_id 
+    @item = Item.find(params[:id])
+    
+    return if user_signed_in? && current_user.id == @item.seller_id
+    redirect_to action: :index
+    flash[:alert] = "指定のページにはアクセスできません"
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
 
