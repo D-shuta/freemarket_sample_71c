@@ -6,17 +6,12 @@ Rails.application.routes.draw do
       get 'step2' # step1とstep2を同時に保存
     end
   end
-  resources :items, only: [:new, :create, :show]
   root to: 'items#index'
   
   resources :items do
     collection do
       get  'get_category_children', defaults: { format: 'json' }
       get  'get_category_grandchildren', defaults: { format: 'json' }
-    end
-    member do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
   resources :cards, only: [:new, :destroy, :edit, :update]
