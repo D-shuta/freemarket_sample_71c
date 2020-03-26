@@ -4,8 +4,7 @@
   .conten__main
     .conten__main--box
       .conten__main--name
-        nickname
-        -# current_useridで呼ぶ
+        =current_user.nickname
       .conten__main--page
         さんのマイページ
   .conten__sabu
@@ -13,12 +12,11 @@
       .conten__sabu--cade
         クレジットカード情報
         %br
-        = link_to "#"do
+        = link_to new_card_path do
           登録
-          -# cade.html.haml
         %br
-        = link_to "#"do
+        = link_to card_path(current_user) do
           変更
       .conten__sabu--out
-        = link_to "/"do
+        = link_to  user_registration_path,method: :delete do
           ログアウト

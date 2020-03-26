@@ -7,12 +7,13 @@ class CardsController < ApplicationController
   #カードのサブクエリ
   def new
     card = Card.where(user_id: current_user.id)
+    # binding.pry
     redirect_to action: "show" if card.exists?
   end
 
   def pay #payjpとCardのデータベース
     #pay.jpのapiキーを定義
-    Payjp.api_key = ENV["sk_test_07dfbaa24e71a735bd63abb6"]
+    Payjp.api_key = "sk_test_07dfbaa24e71a735bd63abb6"
     #トークンが無いとnewに飛ぶ,blank=空白
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -21,7 +22,7 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.create(
       card: params['payjp-token'],
       )
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id:)
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id:customer.default_card)
       #作られたら完了画面へ
       if @card.save
         redirect_to action: "show"
@@ -37,7 +38,7 @@ class CardsController < ApplicationController
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = ENV["sk_test_07dfbaa24e71a735bd63abb6"]
+      Payjp.api_key = "sk_test_07dfbaa24e71a735bd63abb6"
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -51,7 +52,7 @@ class CardsController < ApplicationController
     if card.blank?
       redirect_to action: "new" 
     else
-      Payjp.api_key = ENV["sk_test_07dfbaa24e71a735bd63abb6"]
+      Payjp.api_key = "sk_test_07dfbaa24e71a735bd63abb6"
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
       #retrieve=取り戻す
