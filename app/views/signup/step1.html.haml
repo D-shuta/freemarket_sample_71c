@@ -1,5 +1,12 @@
 #account-page.account-page
   .header
+    .header__inner
+      .main
+        .main__icon
+          = link_to '#' do
+            = image_tag 'logo.png', alt: 'Logo', class: 'main__icon--img'
+        .main__sarch
+          .main__sarch__input
   .account-page__inner
     .account-page__inner--main
       %h1 会員登録済みの方はこちらからログイン
@@ -23,7 +30,7 @@
               .field-label
                 = f.label :名前（名字）
               .field-input
-                = f.text_field :first_name,placeholder:"名字入力＊必須",size:15,required:true,pattern:'/\A[ぁ-んァ-ン一-龥]/',title:"全角で入力して下さい。"
+                = f.text_field :first_name,placeholder:"名字入力＊必須",size:15,required:true,pattern:'/\A[ぁ-んァ-ン一-龥]/*',title:"全角で入力して下さい。"
           .field__box-two
             .field
               .field-label
@@ -34,7 +41,7 @@
               .field-label
                 = f.label :名前（名前）全角
               .field-input
-                = f.text_field :name,placeholder:"名前入力＊必須",size:15,required:true,pattern:'/\A[ぁ-んァ-ン一-龥]/',title:"全角で入力して下さい。"
+                = f.text_field :name,placeholder:"名前入力＊必須",size:15,required:true,pattern:'/\A[ぁ-んァ-ン一-龥]/*',title:"全角で入力して下さい。"
         .field
           .field-label
             = f.label :生年月日
@@ -46,7 +53,7 @@
           .field-label
             = f.label :メールアドレス
           .field-input
-            = f.email_field :email,placeholder:"メールアドレス＠＊必須", autocomplete: "email",size:30,required:true
+            = f.email_field :email,placeholder:"メールアドレス＠＊必須", autocomplete: "email",size:30, required:true
         .field
           .field-label
             = f.label :パスワード
@@ -60,4 +67,3 @@
             = f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"もう一度入力してください＊必須",size:30,required:true,minlength:'7'
         .actions
           = f.submit "NextPage", class: 'touroku__btn'
-  .footer
