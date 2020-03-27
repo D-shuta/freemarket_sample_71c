@@ -7,9 +7,12 @@
     .conten__main--box
       .conten__main--name
         nickname
-        -# current_useridで呼ぶ
-      .conten__main--page
         様のマイページ
+        -# current_useridで呼ぶ
+      .conten__main__link
+        = link_to "#", class: "link-text" do
+          ログアウト
+          = icon('fas', 'running', class: 'icon')
   .conten__sabu
     .conten__sabu__box
       .conten__sabu__box__cade
@@ -17,12 +20,9 @@
           %i.far.fa-credit-card
             クレジットカード
         .conten__sabu__box__cade__btn   
-          = link_to "#", class: "conten__sabu__box__cade__btn__A" do
+          = link_to "#", class: "A" do
             登録
           -# cade.html.haml
           %br
           = link_to "#", class: "A" do
             変更
-      .conten__sabu--out
-        = link_to "/"do
-          ログアウト
