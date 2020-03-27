@@ -1,5 +1,3 @@
-* {
-  box-sizing: border-box;
 #account-page.account-page{
   width: 100%;
   height: 100vh;
@@ -23,11 +21,15 @@
       display: inline-flex;
       &-two{
         margin-left: 10px;
-        }
       }
     }
   }
+}
 
+
+* {
+  box-sizing: border-box;
+}
 
 // sessionsのnew.html.hamlのsassを追記
 
@@ -59,4 +61,3 @@
       text-align: center;
     }
   }
-}

@@ -14,7 +14,7 @@
       %ul.nav__right.ul_Nav
       - if user_signed_in?
         %li.nav__right--first.ul_Nav
-          = link_to  user_registration_path, class: 'a', method: :delete do
+          = link_to  destroy_user_session_path, class: 'a', method: :delete do
             ログアウト
         %li.nav__right--second.ul_Nav
           = link_to "#" , class: 'a' do

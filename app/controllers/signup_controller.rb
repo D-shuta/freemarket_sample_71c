@@ -11,7 +11,7 @@ class SignupController < ApplicationController
     @user.build_user_address # user_addressモデルと紐付け
   end
 
-  def done 
+  def done
   end
   # sessionに保存しつつ、バリテーションかける
   def save_to_session
@@ -56,9 +56,10 @@ class SignupController < ApplicationController
     @user.build_user_address(user_params[:user_address_attributes])
     if@user.save
       session[:user_id] = @user.id # ログイン状態を維持させるためuser_idをsessionに保存
+      sign_in User.find(session[:user_id]) unless user_signed_in?
       redirect_to root_path
     else
-      render '/signup/step1'
+      render '/signup/step2'
     end
   end
 

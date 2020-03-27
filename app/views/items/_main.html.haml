@@ -7,8 +7,10 @@
         FURIMAはだれでもかんたんに出品・購入できる
         %br フリマアプリです
       .main__box1__content__btn
-        = image_tag 'apple.png', alt: 'logo', height: '100%', width: '100%', class: 'main__box1__content__btn__app'
-        = image_tag 'google.png', alt: 'logo', height: '100%', width: '100%', class: 'main__box1__content__btn__google'
+        = link_to '#' do
+          = image_tag 'apple.png', alt: 'logo', height: '100%', width: '100%', class: 'main__box1__content__btn__app'
+        = link_to '#' do
+          = image_tag 'google.png', alt: 'logo', height: '100%', width: '100%', class: 'main__box1__content__btn__google'
   .main__box2
     .main__box2__contents
       .main__box2__contents__title
@@ -54,9 +56,11 @@
         ほしかったあの商品に出会えるかもしれません。
       .main__box3__content__btn
         .main__box3__content__btn__app
-          = image_tag 'apple.png', alt: 'logo', height: '100%', width: '100%', class: 'main__box1__content__btn__app'
+          = link_to '#' do
+            = image_tag 'apple.png', alt: 'logo', height: '100%', width: '100%', class: 'main__box1__content__btn__app'  
         .main__box3__content__btn__google
-          = image_tag 'google.png', alt: 'logo', height: '100%', width: '100%', class: ''
+          = link_to '#' do
+            = image_tag 'google.png', alt: 'logo', height: '100%', width: '100%', class: ''
   .main__box4
     .main__box4__contents
       .main__box4__contents__title
@@ -131,3 +135,16 @@
                   （税込み）
               .info__right
                 ★ 4
+.newForm_btn
+  - if user_signed_in?
+    =link_to new_item_path do
+      .newForm_btn__content
+        .newForm_btn__content--text
+          出品する
+        = image_tag "icon_camera.png", class:"newForm_btn__content--icon"
+  - else  
+    =link_to new_user_session_path do
+      .newForm_btn__content
+        .newForm_btn__content--text
+          出品する
+        = image_tag "icon_camera.png", class:"newForm_btn__content--icon"

@@ -1,4 +1,5 @@
 .show
+  = render "header"
   .header
     %ul.lists
       %li.list
@@ -52,34 +53,38 @@
             %table.table
               %tr.tr
                 %th.th 出品者
-                %td.td hoge
+                %td.td
+                  = @user.nickname
               %tr.tr
                 %th.th カテゴリー
                 %td.td
                   = link_to "#",class:'link' do
-                    メンズ
-                    %br ジャケット/アウター 
-                    ノーカラージャケット
+                    = @category.root.name
+                    %br 
+                    = @category.parent.name 
+                    %br
+                    = @category.name
               %tr.tr
                 %th.th ブランド
                 %td.td
-              %tr.tr
-                %th.th 商品のサイズ
-                %td.td
+                  = @item.brand
               %tr.tr
                 %th.th 商品の状態
-                %td.td 新品/未使用
+                %td.td 
+                  = @item.state
               %tr.tr
-                %th.th 配送料の負担
-                %td.td 着払い (購入者負担) 
+                %th.th 配送料
+                %td.td 
+                  = @item.postage
+                  円
               %tr.tr
                 %th.th 発送元の地域
                 %td.td 
-                  = link_to "#",class:'link' do
-                    青森県
+                  = @item.prefecture.name
               %tr.tr
                 %th.th 発送元の目安
-                %td.td 1-2日で発送
+                %td.td 
+                  = @item.shipping.duration
           .main__box__contents__top__btns
             %button{type: "button", onClick: "location.href= '#'", class:"favorite"}
               %i.fa.fa-star
@@ -110,3 +115,5 @@
           .main__box__contents__links__bottom
             = link_to "#",class:'link' do
               メンズをもっとみる
+  = render "banner"
+  = render "footer"            

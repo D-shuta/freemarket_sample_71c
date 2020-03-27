@@ -14,11 +14,11 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true, length: { minimum: 7 }
   # 本人確認情報
     # ユーザー本名は、苗字と名前でわける、全角入力のみ
-  validates :name, :first_name, presence: true
+  validates :name, :first_name, presence: true, length: { maximum: 50 }
     # 本名ふりがなは、苗字と名前でわける、かな全角入力のみ
-  validates :name_kana, :first_name_kana, presence: true
+  validates :name_kana, :first_name_kana, presence: true, length: { maximum: 50 }
     # 生年月日は必須
-  validates :birthday, presence: true
+  validates :birthday, presence: true, length: { in: 8..10 }
 
   has_one :user_address
   accepts_nested_attributes_for :user_address

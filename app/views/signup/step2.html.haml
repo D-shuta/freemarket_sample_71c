@@ -1,4 +1,12 @@
 #account-page.account-page
+  .header
+    .header__inner
+      .main
+        .main__icon
+          = link_to '#' do
+            = image_tag 'logo.png', alt: 'Logo', class: 'main__icon--img'
+        .main__sarch
+          .main__sarch__input
   .account-page__inner.clearfix
     .account-page__inner--main
       %h1住所情報登録
@@ -55,7 +63,6 @@
               .field-label
                 = b.label :電話番号（ハイフン不要）
               .field-input
-                = b.text_field :phone_number,placeholder:"電話番号",size:15,pattern:'\d',title:"半角数字で入力して下さい。"
-
+                = b.text_field :phone_number,placeholder:"電話番号",size:15,pattern:'/\A\d{11}\z/',title:"半角数字で入力して下さい。"
         .actions
           = f.submit "登録", class: 'btn'
