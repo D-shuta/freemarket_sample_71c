@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :user_addresses, only: [:new, :create, :edit, :update]
   resources :users, only: [:index,:new,:show,:edit]
 
-  resources :purchase, only: [:index] do
+  resources :purchase, only: [:show] do
     collection do
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'

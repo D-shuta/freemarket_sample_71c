@@ -98,7 +98,7 @@
               %button{type: "submit", class: "submit"}
                 %i.fas.fa-comment
                   コメントする
-              = link_to purchase_index_path, class: "buy" do
+              = link_to purchase_path(@item.id), class: "buy" do
                 %i.fas.fa-shopping-cart
                   購入する
         .main__box__contents__links

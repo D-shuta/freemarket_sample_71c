@@ -7,9 +7,8 @@ class Item < ApplicationRecord
 
   belongs_to :category
 
-  has_one :purchase
-  accepts_nested_attributes_for :purchase
-
+  has_many :purchas
+  
   belongs_to :seller, class_name: "User"
   belongs_to :buyer, class_name: "User", optional: true
   
@@ -20,6 +19,6 @@ class Item < ApplicationRecord
 
   validates :postage, :category_id, :seller_id, 
   :images, :price, :prefecture_id, :shipping_id, :state,
-   presence: true
+  presence: true
 
 end

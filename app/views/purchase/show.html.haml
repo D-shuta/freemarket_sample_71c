@@ -1,14 +1,12 @@
--# %h1 Purchase#index
--# %p Find me in app/views/purchase/index.html.haml
--@items.each do |item|
-  購入を確定しますか？
-  %br
-  = item.name
+
+%h1 購入を確定しますか？
+%br
+  = @item.name
   %br
 
-  = item.price
+  = @item.price
   円（税込み）
-%br
+  %br
 %h3 支払い方法
 - if @default_card_information.blank?
   %br /
