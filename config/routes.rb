@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index,:new,:show,:edit]
 
   resources :purchase, only: [:show] do
-    collection do
+    member do
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'
     end

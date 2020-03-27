@@ -19,23 +19,27 @@ class PurchaseController < ApplicationController
   end
 
   def pay
-    
-
-
+    @item=Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = "sk_test_07dfbaa24e71a735bd63abb6"
     Payjp::Charge.create(
-    :amount => 500, #支払金額を入力
+    :amount => @item.price, #支払金額を入力
     :customer => card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
-  )
-  redirect_to root_path
+    )
+    @item.update(buyer_id: current_user.id)
+    redirect_to done_purchase_path
+  end
+
+  def done
+    item = Item.find(params[:id])
+    item.save!
+    redirect_to root_path
   end
 
   private
   def purchase_params
-    params.require(:item).permit(:id,:name,:price,
-    ).merge(buyer_id: current_user.id)
+    params.permit(:id,:name,:price,).merge(buyer_id: current_user.id)
 
   end
 
