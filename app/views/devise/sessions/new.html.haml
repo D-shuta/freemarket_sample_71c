@@ -1,4 +1,4 @@
-.header
+= render "items/header_2"
 .sessions
   .sessions__box
     %h2 マイページログイン
@@ -19,3 +19,5 @@
       .actions
         = f.submit "ログイン"
     = render "devise/shared/links"
+    = link_to "/" do
+      トップページ
