@@ -18,7 +18,7 @@ class Item < ApplicationRecord
 
 
   validates :postage, :category_id, :seller_id, 
-  :images, :price, :prefecture_id, :shipping_id, :state,
+  :images, :price, :prefecture_id, :shipping_id, :state_id,
    presence: true
 
 end
