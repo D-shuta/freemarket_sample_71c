@@ -1,12 +1,5 @@
 #account-page.account-page
-  .header
-    .header__inner
-      .main
-        .main__icon
-          = link_to '#' do
-            = image_tag 'logo.png', alt: 'Logo', class: 'main__icon--img'
-        .main__sarch
-          .main__sarch__input
+  = render "items/header_2"
   .account-page__inner
     .account-page__inner--main
       %h1 会員登録済みの方はこちらからログイン
@@ -46,7 +39,7 @@
           .field-label
             = f.label :生年月日
           .field-input
-            = f.text_field :birthday,autocomplete: "given-name",placeholder:"生年月日＊必須",size:15,pattern:"^[0-9]+$",title:"半角数字で入力して下さい。",required:true
+            = f.text_field :birthday,autocomplete: "given-name",placeholder:"例)2000年01月23日→20000123",size:30,pattern:"^[0-9]+$",title:"半角数字で入力して下さい。",required:true
         .field
           .field-label
         .field
@@ -67,3 +60,5 @@
             = f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"もう一度入力してください＊必須",size:30,required:true,minlength:'7'
         .actions
           = f.submit "NextPage", class: 'touroku__btn'
+      = link_to "/" do
+        トップページ

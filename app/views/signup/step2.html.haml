@@ -1,12 +1,5 @@
 #account-page.account-page
-  .header
-    .header__inner
-      .main
-        .main__icon
-          = link_to '#' do
-            = image_tag 'logo.png', alt: 'Logo', class: 'main__icon--img'
-        .main__sarch
-          .main__sarch__input
+  = render "items/header_2"
   .account-page__inner.clearfix
     .account-page__inner--main
       %h1住所情報登録
@@ -17,52 +10,55 @@
       = form_for @user, url: signup_index_path, method: :post do |f|
         = hidden_field_tag :current_step, 'step2'
         = f.fields_for :user_address, class: 'fields__box' do |b|
-          .field__box-one
-            .field
-              .field-label
-                = b.label :ふりがな（名字）
-              .field-input
-                = b.text_field :first_destinaition_kana, autofocus: true, autocomplete: "given-name", autocomplete: "off",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
-            .field
-              .field-label
-                = b.label :名前（名字）
-              .field-input
-                = b.text_field :first_destinaition_name,autocomplete: "given-name", placeholder:"名字入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
-          .field__box-two
-            .field
-              .field-label
-                = b.label :ふりがな（名前）全角
-              .field-input
-                = b.text_field :destinaition_kana,autocomplete: "family-name", autocomplete: "off",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
-            .field
-              .field-label
-                = b.label :名前（名前）全角
-              .field-input
-                = b.text_field :destinaition_name,autocomplete: "family-name",placeholder:"名前入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
-            .field
-              .field-label
-                = b.label :郵便番号
-              .field-input
-                = b.number_field :postal_code,autocomplete: "off",placeholder:"郵便番号＊必須",size:10,required:true,pattern:'^[0-9]{3}[0-9]{4}$',title:"数字で入力して下さい。"
-            .field
-              .field-label
-                = b.label :都道府県
-              .field-input
-                = b.text_field :prefectures,autocomplete: "off",placeholder:"都、道、府、県",size:14,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
-            .field
-              .field-label
-                = b.label :市区町村
-              .field-input
-                = b.text_field :municipality,autocomplete: "off",placeholder:"市、区、町、村",size:14,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
-            .field
-              .field-label
-                = b.label :以下番地、建物名
-              .field-input
-                = b.text_field :address,autocomplete: "off",placeholder:"〇〇ビル〇〇号室",size:14,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
-            .field
-              .field-label
-                = b.label :電話番号（ハイフン不要）
-              .field-input
-                = b.text_field :phone_number,placeholder:"電話番号",size:15,pattern:'/\A\d{11}\z/',title:"半角数字で入力して下さい。"
+          .field__box
+            .field__box-one
+              .field
+                .field-label
+                  = b.label :ふりがな（名字）
+                .field-input
+                  = b.text_field :first_destinaition_kana, autofocus: true, autocomplete: "given-name", autocomplete: "off",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
+              .field
+                .field-label
+                  = b.label :名前（名字）
+                .field-input
+                  = b.text_field :first_destinaition_name,autocomplete: "given-name", placeholder:"名字入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
+            .field__box-two
+              .field
+                .field-label
+                  = b.label :ふりがな（名前）全角
+                .field-input
+                  = b.text_field :destinaition_kana,autocomplete: "family-name", autocomplete: "off",placeholder:"ふりがな＊必須",size:15,required:true,pattern:'[ぁ-ん][ぁ-んー・]*',title:"全角かなで入力して下さい。"
+              .field
+                .field-label
+                  = b.label :名前（名前）全角
+                .field-input
+                  = b.text_field :destinaition_name,autocomplete: "family-name",placeholder:"名前入力＊必須",size:15,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
+          .field
+            .field-label
+              = b.label :郵便番号
+            .field-input
+              = b.number_field :postal_code,autocomplete: "off",placeholder:"郵便番号＊必須",size:16,required:true,pattern:'^[0-9]{3}[0-9]{4}$',title:"数字で入力して下さい。"
+          .field
+            .field-label
+              = b.label :都道府県
+            .field-input
+              = b.text_field :prefectures,autocomplete: "off",placeholder:"都、道、府、県",size:16,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
+          .field
+            .field-label
+              = b.label :市区町村
+            .field-input
+              = b.text_field :municipality,autocomplete: "off",placeholder:"市、区、町、村",size:16,required:true,pattern:'[^\x01-\x7E]*',title:"全角で入力して下さい。"
+          .field
+            .field-label
+              = b.label :以下番地、建物名
+            .field-input
+              = b.text_field :address,autocomplete: "off",placeholder:"〇〇ビル〇〇号室",size:16,required:true
+          .field
+            .field-label
+              = b.label :電話番号（ハイフン不要）
+            .field-input
+              = b.text_field :phone_number,placeholder:"電話番号",size:16,pattern:'/\A\d{11}\z/',title:"半角数字で入力して下さい。"
         .actions
           = f.submit "登録", class: 'btn'
+      = link_to "/" do
+        トップページ

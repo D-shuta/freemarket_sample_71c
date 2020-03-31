@@ -9,7 +9,7 @@ class UserAddress < ApplicationRecord
     # 都道府県必須
   validates :prefectures, presence: true
     # 市区町村必須
-  validates :municipality, presence: true
+  validates :municipality, presence: true, length: { maximum: 50 }
     # 番地必須
   validates :address, presence: true
     # 電話番号
