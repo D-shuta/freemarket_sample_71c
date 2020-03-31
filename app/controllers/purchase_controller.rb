@@ -1,11 +1,9 @@
 class PurchaseController < ApplicationController
-
+  before_action :set_item, only: [:show, :pay]
+  before_action :set_card, only: [:show, :pay]
   require 'payjp'
 
   def show
-    @item=Item.find(params[:id])
-    card = Card.find_by(user_id: current_user.id)
-    #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"
@@ -19,8 +17,6 @@ class PurchaseController < ApplicationController
   end
 
   def pay
-    @item=Item.find(params[:id])
-    card = Card.where(user_id: current_user.id).first
     Payjp.api_key = "sk_test_07dfbaa24e71a735bd63abb6"
     Payjp::Charge.create(
     :amount => @item.price, #支払金額を入力
@@ -31,16 +27,16 @@ class PurchaseController < ApplicationController
     redirect_to done_purchase_path
   end
 
-  def done
-    item = Item.find(params[:id])
-    item.save!
-    redirect_to root_path
-  end
-
   private
   def purchase_params
     params.permit(:id,:name,:price,).merge(buyer_id: current_user.id)
-
+  end
+  
+  def set_item
+    @item = Item.find(params[:id])
   end
 
+  def set_card
+  card = Card.find_by(user_id: current_user.id)
+  end
 end
