@@ -17,12 +17,12 @@ Rails.application.routes.draw do
     end
 
   end
-  resources :cards, only: [:new, :show] do
+  resources :cards, only: [:new, :show,] do
     collection do
       # card=cardsに修正
       post 'show', to: 'cards#show'
       post 'pay', to: 'cards#pay'
-      post 'delete', to: 'cards#delete'
+      delete 'delete', to: 'cards#delete'
     end
   end
   resources :user_addresses, only: [:new, :create, :edit, :update]

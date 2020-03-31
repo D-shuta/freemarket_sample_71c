@@ -3,52 +3,52 @@
   .header
     %ul.lists
       %li.list
-        = link_to "#",class:'link' do
+        = link_to root_path do
           FURIMA
-      %li.list    
-        >
       %li.list
-        = link_to "#",class:'link' do
-          メンズ 
-      %li.list    
-        >    
+        %i
+          = icon('fa', 'angle-right')
       %li.list
-        = link_to "#",class:'link' do
-          ジャケット/アウター
-      %li.list    
-        >    
+        = link_to "#" do
+          = @category.root.name
       %li.list
-        = link_to "#",class:'link' do
-          ノーカラージャケット
-      %li.list  
-        >    
-      %li.last-list
-        puroduct2
+        %i
+          = icon('fa', 'angle-right')
+      %li.list
+        = link_to "#" do
+          = @category.parent.name
+      %li.list
+        %i
+          = icon('fa', 'angle-right') 
+      %li.list
+        = link_to "#" do
+          = @category.name
+      %li.list
+        %i
+          = icon('fa', 'angle-right') 
+      %li.list
+        %p 
+          = @item.name  
   .main
     .main__box
       .main__box__contents
         .main__box__contents__top
           .main__box__contents__top__images
             .main__box__contents__top__images__title
-              product2
+              = @item.name
             .main__box__contents__top__images__image
               %ul.lists-main
+                = image_tag "#{@item.images.first.image}",class: 'image'
                 %li.list-main
-                  = image_tag 'a004.png', alt: 'image', height: '100%', width: '90%', class: 'image'
-                %ul.lists-sub
-                  %li.list-sub
-                    = image_tag 'a004', alt: 'image', height: '100%', width: '100%', class: 'image'
-                  %li.list-sub
-                    = image_tag 'a005', alt: 'image', height: '100%', width: '100%', class: 'image'
-                  %li.list-sub
-                    = image_tag 'a006', alt: 'image', height: '100%', width: '100%', class: 'image'
+                - @item.images.each do |i|
+                  = image_tag "#{i.image}",class: 'image'
           .main__box__contents__top__prices
             .main__box__contents__top__prices__price
-              ¥20000
+              = @item.price
             .main__box__contents__top__prices__tax-text
-              (税込み)送料込み
+              (税込み)
           .main__box__contents__top__comment
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰が逝った
+            = @item.content
           .main__box__contents__top__table
             %table.table
               %tr.tr
@@ -71,7 +71,7 @@
               %tr.tr
                 %th.th 商品の状態
                 %td.td 
-                  = @item.state
+                  = @item.state.condition
               %tr.tr
                 %th.th 配送料
                 %td.td 

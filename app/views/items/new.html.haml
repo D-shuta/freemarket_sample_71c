@@ -59,14 +59,15 @@
           商品の状態
           %span.important ※必須
         .new-main__name--detail
-          = f.text_field :state, { class:'new-main__name--detail', placeholder: '新品、未使用' }      
+          = f.collection_select :state_id,  State.all, :id, :condition, {}, { class: 'new-main__name--detail--prefecture' }
+
    
       .new-main__postage.new-main__name
         .new-main__name--title
           配送料金
           %span.important ※必須
         .new-main__name--detail
-          = f.text_field :postage, { class:'new-main__name--detail', placeholder: '８００円' }
+          = f.text_field :postage, { class:'new-main__name--detail', placeholder: '半角数字、円不要　例：200' }
              
       .new-main__shipping-date.new-main__name
         .new-main__name--title
@@ -87,7 +88,7 @@
           商品の価格
           %span.important ※必須
         .new-main__name--detail
-          = f.text_field :price, { class:'new-main__name--detail', placeholder: '¥300 ~ ¥2,000,000' }  
+          = f.text_field :price, { class:'new-main__name--detail', placeholder: '半角数字、円不要　例：300' }  
 
       .new-main__submit
         = f.submit '出品する', class: 'new-main__submit--btn'

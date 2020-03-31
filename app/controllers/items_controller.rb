@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   
     @user = @item.seller
     @category = @item.category
@@ -58,7 +57,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -79,7 +77,7 @@ class ItemsController < ApplicationController
   
   def item_params
     params.require(:item).permit(
-      :name, :content, :state, :postage, :shipping_id, :prefecture_id, :price,
+      :name, :content, :postage,:state_id, :shipping_id, :prefecture_id, :price,
       :category_id, :brand,
       images_attributes: [:image, :_destroy, :id] 
     ).merge(seller_id: current_user.id)

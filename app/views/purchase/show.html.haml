@@ -17,8 +17,5 @@
   = exp_month + " / " + exp_year
 %br
 
--# = form_with url: pay_purchase_index_path, local: true do |f|
--#   = f.hidden_field :item_id, :value => @item.id
--#   = f.submit "購入する"
-= form_tag pay_purchase_path(@item),method: :post do
-  %button 購入する
+= form_with url: pay_purchase_path do |f|
+  =f.submit "購入する"

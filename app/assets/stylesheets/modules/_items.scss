@@ -51,6 +51,7 @@
         font-size: 20px;
         padding: 0 10px;
         &--prefecture {
+          border: 1px solid gray;
           @include width-height(220px, 47px);
         }
       }
@@ -130,6 +131,7 @@
   width: 220px;
   height: 47px;
   margin-right: 10px;
+  border: 1px solid gray;
 }
 
 
