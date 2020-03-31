@@ -1,7 +1,6 @@
-
-
 .headers
-  = image_tag "logo.png",width: "200",height:"100"
+  = link_to items_path do
+    = image_tag "logo.png",width: "200",height:"100"
 .conten
   .conten__main
     .conten__main--box
@@ -10,7 +9,7 @@
         様のマイページ
         -# current_useridで呼ぶ
       .conten__main__link
-        = link_to "#", class: "link-text" do
+        = link_to destroy_user_session_path, class: "link-text" do
           ログアウト
           = icon('fas', 'running', class: 'icon')
   .conten__sabu
