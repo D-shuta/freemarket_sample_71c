@@ -1,9 +1,11 @@
 class PurchaseController < ApplicationController
+  require 'payjp'
   before_action :set_item, only: [:show, :pay]
   before_action :set_card, only: [:show, :pay]
-  require 'payjp'
 
   def show
+    card = Card.find_by(user_id: current_user.id)
+    @item = Item.find(params[:id])
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"
@@ -17,6 +19,8 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+    card = Card.find_by(user_id: current_user.id)
+    @item = Item.find(params[:id])
     Payjp.api_key = "sk_test_07dfbaa24e71a735bd63abb6"
     Payjp::Charge.create(
     :amount => @item.price, #支払金額を入力
@@ -24,7 +28,10 @@ class PurchaseController < ApplicationController
     :currency => 'jpy', #日本円
     )
     @item.update(buyer_id: current_user.id)
-    redirect_to done_purchase_path
+    # redirect_to done_purchase_path
+    item = Item.find(params[:id])
+    item.save!
+    redirect_to root_path
   end
 
   private
