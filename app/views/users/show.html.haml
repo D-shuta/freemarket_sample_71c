@@ -5,11 +5,11 @@
   .conten__main
     .conten__main--box
       .conten__main--name
-        nickname
+        = current_user.nickname
         様のマイページ
         -# current_useridで呼ぶ
       .conten__main__link
-        = link_to user_registration_path,method: :delete, class: "link-text" do
+        = link_to destroy_user_session_path,method: :delete, class: "link-text" do
           ログアウト
           = icon('fas', 'running', class: 'icon')
   .conten__sabu

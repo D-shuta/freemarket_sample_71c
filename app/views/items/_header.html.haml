@@ -2,7 +2,7 @@
   .header__inner
     .main
       .main__icon
-        = link_to '#' do
+        = link_to items_path do
           = image_tag 'logo.png', alt: 'Logo', class: 'main__icon--img'
       .main__sarch
         .main__sarch__input
@@ -18,7 +18,7 @@
             %i.fas.fa-sign-out-alt
             ログアウト
         %li.nav__right--second.ul_Nav
-          = link_to users_path , class: 'a' do
+          = link_to user_path(current_user) , class: 'a' do
             %i.fas.fa-user-cog
             マイページ      
       - else
