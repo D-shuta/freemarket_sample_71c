@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-  
     @user = @item.seller
     @category = @item.category
   end
