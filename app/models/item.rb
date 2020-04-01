@@ -9,7 +9,9 @@ class Item < ApplicationRecord
 
   belongs_to :category
 
-  belongs_to :seller, class_name: "User"
+  has_many :purchase
+  
+  belongs_to :seller, class_name: "User",optional: true
   belongs_to :buyer, class_name: "User", optional: true
   
 

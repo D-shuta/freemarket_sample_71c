@@ -13,15 +13,15 @@
           ログアウト
           = icon('fas', 'running', class: 'icon')
   .conten__sabu
-    .conten__sabu__box
-      .conten__sabu__box__cade
-        .conten__sabu__box__cade__title
-          %i.far.fa-credit-card
-            クレジットカード
-        .conten__sabu__box__cade__btn   
-          = link_to "#", class: "A" do
-            登録
-          -# cade.html.haml
-          %br
-          = link_to "#", class: "A" do
-            変更
+    .conten__sabu--box
+      .conten__sabu--cade
+        クレジットカード情報
+        %br
+        = link_to new_card_path do
+          登録
+        %br
+        = link_to card_path(current_user) do
+          変更
+      .conten__sabu--out
+        = link_to  user_registration_path,method: :delete do
+          ログアウト
