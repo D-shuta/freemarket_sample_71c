@@ -104,15 +104,16 @@
               %button{type: "submit", class: "submit"}
                 %i.fas.fa-comment
                   コメントする
-              = link_to purchase_path(@item.id), class: "buy" do
-                %i.fas.fa-shopping-cart
-                  購入する
-            .main__box__contents__bottom__edit
               - if user_signed_in? && current_user.id == @item.seller_id
-                = link_to edit_item_path do
+                = link_to edit_item_path , class: "link" do
                   編集
-                = link_to item_path(@item.id),method: :delete do
-                  削除
+                = link_to item_path(@item.id),method: :delete, class: "link" do
+                  削除    
+              - else
+                = link_to purchase_path(@item.id), class: "buy" do
+                  %i.fas.fa-shopping-cart
+                    購入する
+            .main__box__contents__bottom__edit
                   
         .main__box__contents__links
           .main__box__contents__links__top
