@@ -8,7 +8,7 @@ class PurchaseController < ApplicationController
     @item = Item.find(params[:id])
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
-      redirect_to controller: "card", action: "new"
+      redirect_to controller: "cards", action: "new"
     else
       Payjp.api_key = "sk_test_07dfbaa24e71a735bd63abb6"
       #保管した顧客IDでpayjpから情報取得
