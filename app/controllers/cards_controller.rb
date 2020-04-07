@@ -12,7 +12,7 @@ class CardsController < ApplicationController
 
   def pay #payjpとCardのデータベース
     #pay.jpのapiキーを定義
-    Payjp.api_key = ENV['SECRET_KEY']
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     #トークンが無いとnewに飛ぶ,blank=空白
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -37,7 +37,7 @@ class CardsController < ApplicationController
     card = Card.find_by(user_id: current_user.id)
     if card.blank?
     else
-      Payjp.api_key = ENV['SECRET_KEY']
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -51,7 +51,7 @@ class CardsController < ApplicationController
     if @card.blank?
       redirect_to action: "new" 
     else
-      Payjp.api_key = ENV['SECRET_KEY']
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
       #retrieve=取り戻す
