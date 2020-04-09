@@ -109,10 +109,14 @@
                   編集
                 = link_to item_path(@item.id),method: :delete, class: "link" do
                   削除    
-              - else
+              - elsif user_signed_in?
                 = link_to purchase_path(@item.id), class: "buy" do
                   %i.fas.fa-shopping-cart
-                    購入する
+                    購入する    
+              - else 
+                = link_to user_session_path, class: "buy" do
+                  %i.fas.fa-shopping-cart
+                    購入（ログインが必要）    
             .main__box__contents__bottom__edit
                   
         .main__box__contents__links
